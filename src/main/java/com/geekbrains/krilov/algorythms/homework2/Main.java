@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MyArray<Integer> initialArray= createTestIntegerArray(100000, 1000);
+        MyArray<Integer> initialArray= createTestIntegerArray(100000, 100);
 
         MyArray<Integer> bubbleArray = initialArray.copyOf();
         MyArray<Integer> selectArray = initialArray.copyOf();
