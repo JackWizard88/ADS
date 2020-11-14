@@ -18,13 +18,13 @@ public class Main {
 
         //Deque test
         Deque<Integer> deque = new DequeImpl<>(5);
-        System.out.println(deque.insertLast(1));
+        System.out.println(deque.insertFirst(4));
         System.out.println(deque.toString());
-        System.out.println(deque.insertLast(2));
+        System.out.println(deque.insertLast(1));
         System.out.println(deque.toString());
         System.out.println(deque.insertLast(3));
         System.out.println(deque.toString());
-        System.out.println(deque.insertFirst(4));
+        System.out.println(deque.insertLast(2));
         System.out.println(deque.toString());
         System.out.println(deque.insertFirst(5));
         System.out.println(deque.toString());

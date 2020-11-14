@@ -1,9 +1,8 @@
 package com.geekbrains.krilov.algorythms.homework4;
 
-import com.geekbrains.krilov.algorythms.homework4.LinkedList.Node;
 import java.util.Iterator;
 
-public interface LinkedList<E> extends Iterable<Node<E>> {
+public interface LinkedList<E> extends Iterable<E> {
 
     void insertFirst(E value);
 
@@ -21,7 +20,7 @@ public interface LinkedList<E> extends Iterable<Node<E>> {
 
     E getFirst();
 
-    Iterator<Node<E>> iterator();
+    Iterator<E> iterator();
 
 
     class Node<E> {

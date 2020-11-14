@@ -35,6 +35,12 @@ public class Main {
 
     //рекурсивное возведение в степень
     public static int recursivePow(int value, int degree) {
-        return degree == 1 ? value : value * recursivePow(value, degree - 1);
+
+        if (degree >= 0) {
+            if (degree == 0) return 1;
+            return degree == 1 ? value : value * recursivePow(value, degree - 1);
+        }
+
+        throw new IllegalArgumentException("degree must be more ore equal to zero");
     }
 }

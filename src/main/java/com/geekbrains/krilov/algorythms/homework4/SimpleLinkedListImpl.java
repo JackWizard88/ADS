@@ -101,7 +101,7 @@ public class SimpleLinkedListImpl<E> implements LinkedList<E> {
     }
 
     @Override
-    public Iterator<Node<E>> iterator() {
+    public Iterator<E> iterator() {
         return new LinkedListIterator<>(firstElement);
     }
 }
