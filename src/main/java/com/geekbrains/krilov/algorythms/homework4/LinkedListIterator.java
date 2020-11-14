@@ -3,7 +3,7 @@ package com.geekbrains.krilov.algorythms.homework4;
 import java.util.Iterator;
 import com.geekbrains.krilov.algorythms.homework4.LinkedList.Node;
 
-class LinkedListIterator<E> implements Iterator<Node<E>> {
+class LinkedListIterator<E> implements Iterator<E> {
 
     private Node<E> current;
 
@@ -17,9 +17,9 @@ class LinkedListIterator<E> implements Iterator<Node<E>> {
     }
 
     @Override
-    public Node<E> next() {
+    public E next() {
         Node<E> node = current;
         current = current.next;
-        return node;
+        return node.getItem();
     }
 }

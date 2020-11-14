@@ -1,7 +1,5 @@
 package com.geekbrains.krilov.algorythms.homework4;
 
-import com.geekbrains.krilov.algorythms.homework4.LinkedList.Node;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -12,8 +10,8 @@ public class Main {
         list.insertFirst(2);
         list.insertFirst(1);
 
-        for (Node<Integer> node: list) {
-            System.out.print(node.getItem() + " ");
+        for (Integer i: list) {
+            System.out.print(i + " ");
         }
     }
 }
