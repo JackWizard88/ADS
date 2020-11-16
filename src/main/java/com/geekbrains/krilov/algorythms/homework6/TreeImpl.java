@@ -7,6 +7,13 @@ public class TreeImpl<E extends Comparable<? super E>> implements Tree<E> {
 
     private Node<E> root;
     private int size;
+    private int maxDepth;
+
+    public TreeImpl(int maxDepth) {
+        if (maxDepth > 0) {
+            this.maxDepth = maxDepth;
+        } else throw new IllegalArgumentException("depth must be > 0");
+    }
 
     @Override
     public boolean add(E value) {
@@ -42,8 +49,10 @@ public class TreeImpl<E extends Comparable<? super E>> implements Tree<E> {
     private NodeAndParent doFind(E value) {
         Node<E> previous = null;
         Node<E> current = root;
+        int currentDepth = 1;
 
-        while (current != null) {
+        while (current != null && currentDepth < maxDepth) {
+            currentDepth++;
             if (current.getValue().equals(value)) {
                 return new NodeAndParent(current, previous);
             }
