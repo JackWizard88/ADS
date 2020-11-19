@@ -119,6 +119,57 @@ public class Graph {
         resetVertexState();
     }
 
+    public void findShortestRoute(String startLabel, String destLabel) {
+        int startIndex = indexOf(startLabel);
+        if (startIndex == -1) {
+            throw new IllegalArgumentException("Invalid start label");
+        }
+        int destIndex = indexOf(destLabel);
+        if (destIndex == -1) {
+            throw new IllegalArgumentException("Invalid end label");
+        }
+
+        System.out.print("Кратчайший маршрут: ");
+
+        Queue<Vertex> queue = new LinkedList<>();
+
+        Vertex vertex = vertexList.get(startIndex);
+        Vertex destVertex = vertexList.get(destIndex);
+
+        visitVertex(vertex, queue);
+
+        while (!queue.isEmpty()) {
+            vertex = getNearUnvisitedVertex(queue.peek());
+            if (vertex != null) {
+                visitVertex(vertex, queue, queue.peek());
+                if (vertex.equals(destVertex)) {
+                    printRoute(vertex);
+                    break;
+                }
+            }
+            else {
+                queue.remove();
+            }
+        }
+
+        resetVertexState();
+    }
+
+    private void printRoute(Vertex vertex) {
+
+        Stack<String> stack = new Stack<>();
+
+        while (vertex.getPrevious() != null) {
+            stack.push(vertex.getLabel());
+            vertex = vertex.getPrevious();
+        }
+
+        while (!stack.empty()) {
+            System.out.print(" -> " + stack.pop());
+        }
+
+    }
+
     private void resetVertexState() {
         for (Vertex vertex : vertexList) {
             vertex.setVisited(false);
@@ -136,13 +187,22 @@ public class Graph {
     }
 
     private void visitVertex(Vertex vertex, Stack<Vertex> stack) {
-        System.out.println(vertex);
+        System.out.print(vertex.getLabel());
         stack.push(vertex);
         vertex.setVisited(true);
     }
+
     private void visitVertex(Vertex vertex, Queue<Vertex> queue) {
-        System.out.println(vertex);
+        System.out.print(vertex.getLabel());
         queue.add(vertex);
         vertex.setVisited(true);
     }
+
+    private void visitVertex(Vertex vertex, Queue<Vertex> queue, Vertex previous) {
+        queue.add(vertex);
+        vertex.setPrevious(previous);
+        vertex.setVisited(true);
+    }
+
+
 }
